@@ -16,8 +16,6 @@ jobs:
 
       - run: ./gradlew clean test --tests "shouldFindSelenideRepositoryAtTheTop" -Dselenide.remote=http://localhost:4444/wd/hub
 
-
-      - uses: actions/checkout@v2
         if: always()
         continue-on-error: true
         with:
