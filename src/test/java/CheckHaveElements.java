@@ -32,18 +32,18 @@ public class CheckHaveElements {
             open("https://github.com/selenide/selenide");
         });
 
-        step("Открытие страницы GitHub", () -> {
+        step("Пролистать до значка 1-го участника репозитория и навести на него курсор", () -> {
             $(".BorderGrid").$(byText("Contributors")).ancestor(".BorderGrid-row")
                     .$$("ul li").first().hover();
         });
 
-        step("Открытие страницы GitHub", () -> {
+        step("Проверить его имя", () -> {
             $$(".Popover .Popover-message").findBy(visible).shouldHave(text("Andrei Solntsev"));
         });
     }
 
     @Test
-    @DisplayName("Проверка названия исходного кода в разделе Soft Assertions")
+    @DisplayName("Проверка наличия исходного кода в разделе Soft Assertions")
     @Feature("")
     @Story("")
     @Owner("Quthonn")
