@@ -18,20 +18,20 @@ jobs:
         if: always()
         continue-on-error: true
         with:
-          ref: gh-pages
-          path: gh-pages
+          ref: Dev_Test
+          path: Dev_Test
 
       - uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          gh_pages: gh-pages
+          gh_pages: Dev_Test
           allure_results: build/allure-results
           allure_report: allure-report
           allure_history: allure-history
 
-      - uses: peaceiris/actions-gh-pages@v2
+      - uses: peaceiris/actions-Dev_Test@v2
         if: always()
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
+          PUBLISH_BRANCH: Dev_Test
           PUBLISH_DIR: allure-history
