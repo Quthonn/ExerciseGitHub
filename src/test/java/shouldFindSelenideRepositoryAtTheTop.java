@@ -1,9 +1,14 @@
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
 public class shouldFindSelenideRepositoryAtTheTop {
     @BeforeAll
@@ -12,13 +17,33 @@ public class shouldFindSelenideRepositoryAtTheTop {
     }
 
     @Test
+    @DisplayName("Поиск репозитория, открытие его страницы и проверка названия")
+    @Feature("")
+    @Story("")
+    @Owner("Quthonn")
+    @Severity(SeverityLevel.TRIVIAL)
+    @Link(value = "testing", url = "https://github.com")
     void shouldFindSelenideRepositoryAtTheTop() {
-        open("https://github.com/");
-        $(".search-input").click();
-        $("[name=query-builder-test]").setValue("selenide").pressEnter();
-        sleep(1000);
-        $$("a.prc-Link-Link-85e08").findBy(text("selenide/selenide")).click();
-        $("#repository-container-header").shouldHave(text("selenide / selenide"));
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
+        step("Открытие страницы GitHub", () -> {
+            open("https://github.com/");
+        });
+
+        step("Нажатие по полю поиска", () -> {
+            $(".search-input").click();
+        });
+
+        step("Ввод поискового запроса", () -> {
+            $("[name=query-builder-test]").setValue("selenide").pressEnter();
+        });
+
+        step("Поиск репозитория с названием 'selenide/selenide' и нажатие по нему", () -> {
+            $$("a.prc-Link-Link-85e08").findBy(text("selenide/selenide")).click();
+        });
+
+        step("Проверка названия репозитория в его странице GitHub", () -> {
+            $("#repository-container-header").shouldHave(text("selenide / selenide"));
+        });
     }
 }
