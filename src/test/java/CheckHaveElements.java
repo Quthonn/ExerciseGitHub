@@ -1,5 +1,8 @@
 import com.codeborne.selenide.*;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.*;
@@ -11,6 +14,12 @@ import org.openqa.selenium.By;
 
 public class CheckHaveElements {
 
+    @BeforeAll
+    public static void BeforeAll() {
+        Configuration.holdBrowserOpen = true;
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
     @Test
     @DisplayName("Проверка имени первого участника репозитория")
     @Feature("")
@@ -19,7 +28,6 @@ public class CheckHaveElements {
     @Severity(SeverityLevel.TRIVIAL)
     @Link(value = "testing", url = "https://github.com")
     void solntsevShouldBeTheTopContributor() {
-        Configuration.holdBrowserOpen = true;
         step("Открытие страницы GitHub", () -> {
             open("https://github.com/selenide/selenide");
         });
@@ -27,14 +35,11 @@ public class CheckHaveElements {
         step("Открытие страницы GitHub", () -> {
             $(".BorderGrid").$(byText("Contributors")).ancestor(".BorderGrid-row")
                     .$$("ul li").first().hover();
-
         });
 
         step("Открытие страницы GitHub", () -> {
             $$(".Popover .Popover-message").findBy(visible).shouldHave(text("Andrei Solntsev"));
-
         });
-
     }
 
     @Test

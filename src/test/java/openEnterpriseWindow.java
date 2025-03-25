@@ -1,4 +1,6 @@
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,6 +15,7 @@ public class openEnterpriseWindow {
     @BeforeAll
     public static void BeforeAll() {
         Configuration.holdBrowserOpen = true;
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @Test
@@ -43,8 +46,5 @@ public class openEnterpriseWindow {
         step("Проверка названия страницы", () -> {
             $(By.cssSelector("a[data-testid='SubNav-root-heading']")).shouldBe(text("Enterprise"));
         });
-
-
-
     }
 }
