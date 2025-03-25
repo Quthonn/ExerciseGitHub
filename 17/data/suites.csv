@@ -1,2 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","10900","Поиск репозитория, открытие его страницы и проверка названия","","Tue Mar 25 17:53:47 GMT 2025","passed","Tue Mar 25 17:53:58 GMT 2025","","shouldFindSelenideRepositoryAtTheTop","shouldFindSelenideRepositoryAtTheTop","shouldFindSelenideRepositoryAtTheTop"
