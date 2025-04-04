@@ -1,9 +1,8 @@
 import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.Attach;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -32,6 +31,19 @@ public class shouldFindSelenideRepositoryAtTheTop {
         Configuration.browserCapabilities = capabilities;
     }
 
+    @BeforeEach
+    public void BeforeEach() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterEach
+    public void AfterEach() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+    }
+
 
     @Test
     @DisplayName("Поиск репозитория, открытие его страницы и проверка названия")
@@ -41,7 +53,7 @@ public class shouldFindSelenideRepositoryAtTheTop {
     @Severity(SeverityLevel.TRIVIAL)
     @Link(value = "testing", url = "https://github.com")
     void shouldFindSelenideRepositoryAtTheTop() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
+
 
         step("Открытие страницы GitHub", () -> {
             open("https://github.com/");
