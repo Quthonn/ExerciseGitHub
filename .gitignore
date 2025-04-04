@@ -7,6 +7,8 @@
 
 draft.txt
 notifications/draft.txt
+configPRIVATE.json
+notifications/configPRIVATE.json
 .env
 # User-specific stuff
 .idea/**/workspace.xml

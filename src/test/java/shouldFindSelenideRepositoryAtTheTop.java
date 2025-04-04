@@ -5,6 +5,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import com.codeborne.selenide.Configuration;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.util.Map;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.open;
@@ -14,7 +18,20 @@ public class shouldFindSelenideRepositoryAtTheTop {
     @BeforeAll
     public static void BeforeAll() {
         Configuration.holdBrowserOpen = true;
+
+        Configuration.remote = "http://localhost:4445/wd/hub";
+        Configuration.browser = "chrome";
+        Configuration.browserVersion = "128.0";
+        Configuration.browserSize = "1920x1080";
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+
+        Configuration.browserCapabilities = capabilities;
     }
+
 
     @Test
     @DisplayName("Поиск репозитория, открытие его страницы и проверка названия")
