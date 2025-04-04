@@ -45,8 +45,11 @@ public class Attach {
 
     public  static URL getVideoUrl() {
         String videoUrl = "http://localhost:4445/video/" + sessionId() + ".mp4";
-        System.out.println("Ваш sessionId для просмотра " +
-                "видео c прохождением теста: " + sessionId());
+
+        System.out.println("Ваша ссылка для просмотра " +
+                "видео c прохождением теста: " +
+                "http://localhost:4445/video/" + sessionId() + ".mp4");
+
         try {
             return new URL(videoUrl);
         } catch (MalformedURLException e) {
