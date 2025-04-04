@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","24","Проверка наличия исходного кода в разделе Soft Assertions","","Fri Apr 04 15:24:20 GMT 2025","broken","Fri Apr 04 15:24:20 GMT 2025","","CheckHaveElements","CheckHaveElements","CheckHaveCode"
+"","17","Поиск репозитория, открытие его страницы и проверка названия","","Fri Apr 04 15:24:20 GMT 2025","broken","Fri Apr 04 15:24:20 GMT 2025","","shouldFindSelenideRepositoryAtTheTop","shouldFindSelenideRepositoryAtTheTop","shouldFindSelenideRepositoryAtTheTop"
+"","24","Открытие раздела Enterprises и проверка его названия","","Fri Apr 04 15:24:20 GMT 2025","broken","Fri Apr 04 15:24:20 GMT 2025","","openEnterpriseWindow","openEnterpriseWindow","shouldFindSelenideRepositoryAtTheTop"
+"","1093","Проверка имени первого участника репозитория","","Fri Apr 04 15:24:19 GMT 2025","broken","Fri Apr 04 15:24:20 GMT 2025","","CheckHaveElements","CheckHaveElements","solntsevShouldBeTheTopContributor"
