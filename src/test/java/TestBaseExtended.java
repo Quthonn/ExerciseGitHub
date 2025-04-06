@@ -14,10 +14,10 @@ public class TestBaseExtended {
     public static void BeforeAll() {
         Configuration.holdBrowserOpen = true;
 
-        Configuration.remote = "http://localhost:4445/wd/hub";
-        Configuration.browser = "chrome";
-        Configuration.browserVersion = "128.0";
-        Configuration.browserSize = "1920x1080";
+        Configuration.remote = System.getProperty("remoteUrl", "http://localhost:4445/wd/hub");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "128.0");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
